@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/lib/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  DALG
+  DPRO
+}
+
+enum StatusGeral {
+  pendente
+  em_andamento
+  separado
+  em_montagem
+  concluido
+}
+
+enum Kit {
+  KIT_3B
+  KIT_3K
+}
+
+enum StatusCarrinho {
+  em_andamento
+  pendente
+  concluido
+  em_movimentacao
+  em_montagem
+  montagem_concluida
+  montagem_pendente
+}
+
+enum StatusItem {
+  nao_iniciado
+  em_andamento
+  concluido
+  pendente
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role
+  createdAt DateTime @default(now()) @map("created_at")
+
+  logs LogsAuditoria[]
+
+  @@map("users")
+}
+
+model Obra {
+  id          String      @id @default(uuid())
+  numeroObra  String      @unique @map("numero_obra")
+  dataObra    DateTime    @map("data_obra")
+  statusGeral StatusGeral @default(pendente) @map("status_geral")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+
+  carrinhos Carrinho[]
+
+  @@map("obras")
+}
+
+model Carrinho {
+  id        String         @id @default(uuid())
+  obraId    String         @map("obra_id")
+  kit       Kit
+  status    StatusCarrinho @default(em_andamento)
+  solicitado Boolean       @default(false)
+  recebido   Boolean       @default(false)
+  updatedAt  DateTime      @updatedAt @map("updated_at")
+
+  obra  Obra           @relation(fields: [obraId], references: [id], onDelete: Cascade)
+  itens ItemSeparacao[]
+
+  @@map("carrinhos")
+}
+
+model ItemSeparacao {
+  id          String     @id @default(uuid())
+  carrinhoId  String     @map("carrinho_id")
+  nome        String
+  banca       String
+  status      StatusItem @default(nao_iniciado)
+  timerStart  DateTime?  @map("timer_start")
+  timerEnd    DateTime?  @map("timer_end")
+  montagemStatus     String?   @map("montagem_status")
+  montagemObservacao String?   @map("montagem_observacao")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  carrinho   Carrinho           @relation(fields: [carrinhoId], references: [id], onDelete: Cascade)
+  pendencias PendenciaSeparacao[]
+
+  @@map("itens_separacao")
+}
+
+model PendenciaSeparacao {
+  id             String   @id @default(uuid())
+  itemSeparacaoId String  @map("item_separacao_id")
+  codigoMaterial String   @map("codigo_material")
+  quantidade     Int
+  observacao     String?
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  item ItemSeparacao @relation(fields: [itemSeparacaoId], references: [id], onDelete: Cascade)
+
+  @@map("pendencias_separacao")
+}
+
+model LogsAuditoria {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  acao      String
+  entidade  String
+  entidadeId String  @map("entidade_id")
+  detalhes  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("logs_auditoria")
+}
