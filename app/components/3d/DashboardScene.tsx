@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars, Grid } from "@react-three/drei";
 import * as THREE from "three";
@@ -33,12 +33,15 @@ function FloorGrid() {
 
 function AmbientParticles() {
   const ref = useRef<THREE.Points>(null);
-  const positions = new Float32Array(300 * 3);
-  for (let i = 0; i < 300; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 30;
-    positions[i * 3 + 1] = Math.random() * 10;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 30;
-  }
+  const positions = useMemo(() => {
+    const arr = new Float32Array(300 * 3);
+    for (let i = 0; i < 300; i++) {
+      arr[i * 3] = (Math.random() - 0.5) * 30;
+      arr[i * 3 + 1] = Math.random() * 10;
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 30;
+    }
+    return arr;
+  }, []);
 
   useFrame((state) => {
     if (ref.current) {
@@ -70,6 +73,12 @@ export default function DashboardScene({ carrinhos, onSelectCarrinho }: Dashboar
       camera={{ position: [0, 4, 12], fov: 55 }}
       style={{ background: "transparent" }}
       shadows
+      dpr={[1, 1.5]}
+      gl={{
+        antialias: false,
+        powerPreference: "default",
+        failIfMajorPerformanceCaveat: false,
+      }}
     >
       <color attach="background" args={["#030712"]} />
       <fog attach="fog" args={["#030712", 15, 35]} />

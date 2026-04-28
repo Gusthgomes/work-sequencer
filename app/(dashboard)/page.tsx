@@ -199,46 +199,49 @@ export default function DashboardPage() {
                 )}
               </div>
             </div>
-          ) : view === "3d" ? (
-            <Suspense fallback={
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
-              </div>
-            }>
-              <DashboardScene
-                carrinhos={allCarrinhos}
-                onSelectCarrinho={setSelectedCarrinho}
-              />
-            </Suspense>
           ) : (
-            <div className="p-6 overflow-y-auto h-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {allCarrinhos.map((c) => {
-                  const info = STATUS_CARRINHO_COLORS[c.status as StatusCarrinho];
-                  return (
-                    <motion.div
-                      key={c.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      whileHover={{ scale: 1.02 }}
-                      onClick={() => setSelectedCarrinho(c.id)}
-                      className={`p-4 rounded-xl border cursor-pointer transition-colors ${
-                        selectedCarrinho === c.id
-                          ? "border-blue-500 bg-blue-500/10"
-                          : "border-gray-700 bg-gray-900 hover:border-gray-600"
-                      }`}
-                    >
-                      <div className={`w-full h-2 rounded-full ${info.bg} mb-3`} />
-                      <p className="font-bold text-white text-lg">{c.numeroObra}</p>
-                      <p className="text-gray-400 text-xs mb-2">
-                        {c.kit === "KIT_3B" ? "Kit 3B" : "Kit 3K"}
-                      </p>
-                      <StatusBadge status={c.status as StatusCarrinho} />
-                    </motion.div>
-                  );
-                })}
+            <>
+              <div className={view === "3d" ? "absolute inset-0" : "hidden"}>
+                <Suspense fallback={
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                  </div>
+                }>
+                  <DashboardScene
+                    carrinhos={allCarrinhos}
+                    onSelectCarrinho={setSelectedCarrinho}
+                  />
+                </Suspense>
               </div>
-            </div>
+              <div className={view !== "3d" ? "p-6 overflow-y-auto h-full" : "hidden"}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {allCarrinhos.map((c) => {
+                    const info = STATUS_CARRINHO_COLORS[c.status as StatusCarrinho];
+                    return (
+                      <motion.div
+                        key={c.id}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        whileHover={{ scale: 1.02 }}
+                        onClick={() => setSelectedCarrinho(c.id)}
+                        className={`p-4 rounded-xl border cursor-pointer transition-colors ${
+                          selectedCarrinho === c.id
+                            ? "border-blue-500 bg-blue-500/10"
+                            : "border-gray-700 bg-gray-900 hover:border-gray-600"
+                        }`}
+                      >
+                        <div className={`w-full h-2 rounded-full ${info.bg} mb-3`} />
+                        <p className="font-bold text-white text-lg">{c.numeroObra}</p>
+                        <p className="text-gray-400 text-xs mb-2">
+                          {c.kit === "KIT_3B" ? "Kit 3B" : "Kit 3K"}
+                        </p>
+                        <StatusBadge status={c.status as StatusCarrinho} />
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </>
           )}
         </div>
 
