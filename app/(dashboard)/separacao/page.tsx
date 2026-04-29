@@ -301,6 +301,7 @@ export default function SeparacaoPage() {
 
   // Detecta se há separação ativa (algum item em_andamento na obra selecionada)
   const selectedObra = obras.find((o) => o.id === selectedObraId);
+  const carrinho = selectedObra?.carrinhos.find((c) => c.kit === activeKit);
   const hasActiveSeparation = selectedObra?.carrinhos.some((c) =>
     c.itens.some((i) => i.status === "em_andamento")
   ) ?? false;
@@ -360,9 +361,6 @@ export default function SeparacaoPage() {
   useEffect(() => {
     fetchObras();
   }, [fetchObras]);
-
-  const selectedObra = obras.find((o) => o.id === selectedObraId);
-  const carrinho = selectedObra?.carrinhos.find((c) => c.kit === activeKit);
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6">
