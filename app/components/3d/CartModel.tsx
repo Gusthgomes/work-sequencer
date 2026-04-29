@@ -95,7 +95,8 @@ export default function CartModel({
         <Text
           position={[0, -0.18, 0.42]}
           fontSize={0.12}
-          color="rgba(255,255,255,0.7)"
+          color="white"
+          fillOpacity={0.7}
           anchorX="center"
           anchorY="middle"
         >

@@ -72,7 +72,7 @@ export default function DashboardScene({ carrinhos, onSelectCarrinho }: Dashboar
     <Canvas
       camera={{ position: [0, 4, 12], fov: 55 }}
       style={{ background: "transparent" }}
-      shadows
+      shadows="percentage"
       dpr={[1, 1.5]}
       gl={{
         antialias: false,
