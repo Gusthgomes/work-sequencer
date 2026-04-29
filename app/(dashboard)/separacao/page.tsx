@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuthStore } from "@/app/store/auth";
 import { useObrasStore, Obra, ItemSeparacao } from "@/app/store/obras";
+import PendenciasAlerta from "@/app/components/PendenciasAlerta";
 
 function useTimer(startTime?: string) {
   const [elapsed, setElapsed] = useState(0);
@@ -384,6 +385,9 @@ export default function SeparacaoPage() {
             </div>
           )}
         </div>
+
+        {/* Painel de itens pendentes */}
+        <PendenciasAlerta showList onTratado={fetchObras} />
 
         {/* Filtro de data + seleção de obra */}
         <div className="mb-6 p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-3">

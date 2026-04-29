@@ -168,6 +168,8 @@ exports.Prisma.PendenciaSeparacaoScalarFieldEnum = {
   codigoMaterial: 'codigoMaterial',
   quantidade: 'quantidade',
   observacao: 'observacao',
+  tratado: 'tratado',
+  tratatoAt: 'tratatoAt',
   createdAt: 'createdAt'
 };
 

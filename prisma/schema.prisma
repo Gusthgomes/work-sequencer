@@ -104,12 +104,14 @@ model ItemSeparacao {
 }
 
 model PendenciaSeparacao {
-  id             String   @id @default(uuid())
-  itemSeparacaoId String  @map("item_separacao_id")
-  codigoMaterial String   @map("codigo_material")
+  id             String    @id @default(uuid())
+  itemSeparacaoId String   @map("item_separacao_id")
+  codigoMaterial String    @map("codigo_material")
   quantidade     Int
   observacao     String?
-  createdAt      DateTime @default(now()) @map("created_at")
+  tratado        Boolean   @default(false)
+  tratatoAt      DateTime? @map("tratado_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
 
   item ItemSeparacao @relation(fields: [itemSeparacaoId], references: [id], onDelete: Cascade)
 

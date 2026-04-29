@@ -7,6 +7,8 @@ export interface PendenciaItem {
   codigoMaterial: string;
   quantidade: number;
   observacao?: string;
+  tratado?: boolean;
+  tratatoAt?: string;
 }
 
 export interface ItemSeparacao {

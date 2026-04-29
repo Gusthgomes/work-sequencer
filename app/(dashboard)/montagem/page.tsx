@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useObrasStore, Obra, Carrinho } from "@/app/store/obras";
 import { STATUS_CARRINHO_COLORS, StatusCarrinho } from "@/app/lib/types";
+import PendenciasAlerta from "@/app/components/PendenciasAlerta";
 
 interface MotivoModal {
   itemId: string;
@@ -247,6 +248,9 @@ export default function MontagemPage() {
             </button>
           </div>
         </div>
+
+        {/* Alerta de pendências de separação */}
+        <PendenciasAlerta />
 
         {/* KPIs */}
         <div className="grid grid-cols-3 gap-4 mb-6">

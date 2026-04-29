@@ -6012,6 +6012,8 @@ export namespace Prisma {
     codigoMaterial: string | null
     quantidade: number | null
     observacao: string | null
+    tratado: boolean | null
+    tratatoAt: Date | null
     createdAt: Date | null
   }
 
@@ -6021,6 +6023,8 @@ export namespace Prisma {
     codigoMaterial: string | null
     quantidade: number | null
     observacao: string | null
+    tratado: boolean | null
+    tratatoAt: Date | null
     createdAt: Date | null
   }
 
@@ -6030,6 +6034,8 @@ export namespace Prisma {
     codigoMaterial: number
     quantidade: number
     observacao: number
+    tratado: number
+    tratatoAt: number
     createdAt: number
     _all: number
   }
@@ -6049,6 +6055,8 @@ export namespace Prisma {
     codigoMaterial?: true
     quantidade?: true
     observacao?: true
+    tratado?: true
+    tratatoAt?: true
     createdAt?: true
   }
 
@@ -6058,6 +6066,8 @@ export namespace Prisma {
     codigoMaterial?: true
     quantidade?: true
     observacao?: true
+    tratado?: true
+    tratatoAt?: true
     createdAt?: true
   }
 
@@ -6067,6 +6077,8 @@ export namespace Prisma {
     codigoMaterial?: true
     quantidade?: true
     observacao?: true
+    tratado?: true
+    tratatoAt?: true
     createdAt?: true
     _all?: true
   }
@@ -6163,6 +6175,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao: string | null
+    tratado: boolean
+    tratatoAt: Date | null
     createdAt: Date
     _count: PendenciaSeparacaoCountAggregateOutputType | null
     _avg: PendenciaSeparacaoAvgAggregateOutputType | null
@@ -6191,6 +6205,8 @@ export namespace Prisma {
     codigoMaterial?: boolean
     quantidade?: boolean
     observacao?: boolean
+    tratado?: boolean
+    tratatoAt?: boolean
     createdAt?: boolean
     item?: boolean | ItemSeparacaoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pendenciaSeparacao"]>
@@ -6201,6 +6217,8 @@ export namespace Prisma {
     codigoMaterial?: boolean
     quantidade?: boolean
     observacao?: boolean
+    tratado?: boolean
+    tratatoAt?: boolean
     createdAt?: boolean
     item?: boolean | ItemSeparacaoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pendenciaSeparacao"]>
@@ -6211,6 +6229,8 @@ export namespace Prisma {
     codigoMaterial?: boolean
     quantidade?: boolean
     observacao?: boolean
+    tratado?: boolean
+    tratatoAt?: boolean
     createdAt?: boolean
     item?: boolean | ItemSeparacaoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pendenciaSeparacao"]>
@@ -6221,10 +6241,12 @@ export namespace Prisma {
     codigoMaterial?: boolean
     quantidade?: boolean
     observacao?: boolean
+    tratado?: boolean
+    tratatoAt?: boolean
     createdAt?: boolean
   }
 
-  export type PendenciaSeparacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemSeparacaoId" | "codigoMaterial" | "quantidade" | "observacao" | "createdAt", ExtArgs["result"]["pendenciaSeparacao"]>
+  export type PendenciaSeparacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemSeparacaoId" | "codigoMaterial" | "quantidade" | "observacao" | "tratado" | "tratatoAt" | "createdAt", ExtArgs["result"]["pendenciaSeparacao"]>
   export type PendenciaSeparacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     item?: boolean | ItemSeparacaoDefaultArgs<ExtArgs>
   }
@@ -6246,6 +6268,8 @@ export namespace Prisma {
       codigoMaterial: string
       quantidade: number
       observacao: string | null
+      tratado: boolean
+      tratatoAt: Date | null
       createdAt: Date
     }, ExtArgs["result"]["pendenciaSeparacao"]>
     composites: {}
@@ -6676,6 +6700,8 @@ export namespace Prisma {
     readonly codigoMaterial: FieldRef<"PendenciaSeparacao", 'String'>
     readonly quantidade: FieldRef<"PendenciaSeparacao", 'Int'>
     readonly observacao: FieldRef<"PendenciaSeparacao", 'String'>
+    readonly tratado: FieldRef<"PendenciaSeparacao", 'Boolean'>
+    readonly tratatoAt: FieldRef<"PendenciaSeparacao", 'DateTime'>
     readonly createdAt: FieldRef<"PendenciaSeparacao", 'DateTime'>
   }
     
@@ -8255,6 +8281,8 @@ export namespace Prisma {
     codigoMaterial: 'codigoMaterial',
     quantidade: 'quantidade',
     observacao: 'observacao',
+    tratado: 'tratado',
+    tratatoAt: 'tratatoAt',
     createdAt: 'createdAt'
   };
 
@@ -8755,6 +8783,8 @@ export namespace Prisma {
     codigoMaterial?: StringFilter<"PendenciaSeparacao"> | string
     quantidade?: IntFilter<"PendenciaSeparacao"> | number
     observacao?: StringNullableFilter<"PendenciaSeparacao"> | string | null
+    tratado?: BoolFilter<"PendenciaSeparacao"> | boolean
+    tratatoAt?: DateTimeNullableFilter<"PendenciaSeparacao"> | Date | string | null
     createdAt?: DateTimeFilter<"PendenciaSeparacao"> | Date | string
     item?: XOR<ItemSeparacaoScalarRelationFilter, ItemSeparacaoWhereInput>
   }
@@ -8765,6 +8795,8 @@ export namespace Prisma {
     codigoMaterial?: SortOrder
     quantidade?: SortOrder
     observacao?: SortOrderInput | SortOrder
+    tratado?: SortOrder
+    tratatoAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     item?: ItemSeparacaoOrderByWithRelationInput
   }
@@ -8778,6 +8810,8 @@ export namespace Prisma {
     codigoMaterial?: StringFilter<"PendenciaSeparacao"> | string
     quantidade?: IntFilter<"PendenciaSeparacao"> | number
     observacao?: StringNullableFilter<"PendenciaSeparacao"> | string | null
+    tratado?: BoolFilter<"PendenciaSeparacao"> | boolean
+    tratatoAt?: DateTimeNullableFilter<"PendenciaSeparacao"> | Date | string | null
     createdAt?: DateTimeFilter<"PendenciaSeparacao"> | Date | string
     item?: XOR<ItemSeparacaoScalarRelationFilter, ItemSeparacaoWhereInput>
   }, "id">
@@ -8788,6 +8822,8 @@ export namespace Prisma {
     codigoMaterial?: SortOrder
     quantidade?: SortOrder
     observacao?: SortOrderInput | SortOrder
+    tratado?: SortOrder
+    tratatoAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: PendenciaSeparacaoCountOrderByAggregateInput
     _avg?: PendenciaSeparacaoAvgOrderByAggregateInput
@@ -8805,6 +8841,8 @@ export namespace Prisma {
     codigoMaterial?: StringWithAggregatesFilter<"PendenciaSeparacao"> | string
     quantidade?: IntWithAggregatesFilter<"PendenciaSeparacao"> | number
     observacao?: StringNullableWithAggregatesFilter<"PendenciaSeparacao"> | string | null
+    tratado?: BoolWithAggregatesFilter<"PendenciaSeparacao"> | boolean
+    tratatoAt?: DateTimeNullableWithAggregatesFilter<"PendenciaSeparacao"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"PendenciaSeparacao"> | Date | string
   }
 
@@ -9186,6 +9224,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao?: string | null
+    tratado?: boolean
+    tratatoAt?: Date | string | null
     createdAt?: Date | string
     item: ItemSeparacaoCreateNestedOneWithoutPendenciasInput
   }
@@ -9196,6 +9236,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao?: string | null
+    tratado?: boolean
+    tratatoAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -9204,6 +9246,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     item?: ItemSeparacaoUpdateOneRequiredWithoutPendenciasNestedInput
   }
@@ -9214,6 +9258,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9223,6 +9269,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao?: string | null
+    tratado?: boolean
+    tratatoAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -9231,6 +9279,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9240,6 +9290,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9729,6 +9781,8 @@ export namespace Prisma {
     codigoMaterial?: SortOrder
     quantidade?: SortOrder
     observacao?: SortOrder
+    tratado?: SortOrder
+    tratatoAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -9742,6 +9796,8 @@ export namespace Prisma {
     codigoMaterial?: SortOrder
     quantidade?: SortOrder
     observacao?: SortOrder
+    tratado?: SortOrder
+    tratatoAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -9751,6 +9807,8 @@ export namespace Prisma {
     codigoMaterial?: SortOrder
     quantidade?: SortOrder
     observacao?: SortOrder
+    tratado?: SortOrder
+    tratatoAt?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -10679,6 +10737,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao?: string | null
+    tratado?: boolean
+    tratatoAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -10687,6 +10747,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao?: string | null
+    tratado?: boolean
+    tratatoAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -10756,6 +10818,8 @@ export namespace Prisma {
     codigoMaterial?: StringFilter<"PendenciaSeparacao"> | string
     quantidade?: IntFilter<"PendenciaSeparacao"> | number
     observacao?: StringNullableFilter<"PendenciaSeparacao"> | string | null
+    tratado?: BoolFilter<"PendenciaSeparacao"> | boolean
+    tratatoAt?: DateTimeNullableFilter<"PendenciaSeparacao"> | Date | string | null
     createdAt?: DateTimeFilter<"PendenciaSeparacao"> | Date | string
   }
 
@@ -11016,6 +11080,8 @@ export namespace Prisma {
     codigoMaterial: string
     quantidade: number
     observacao?: string | null
+    tratado?: boolean
+    tratatoAt?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -11024,6 +11090,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11032,6 +11100,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11040,6 +11110,8 @@ export namespace Prisma {
     codigoMaterial?: StringFieldUpdateOperationsInput | string
     quantidade?: IntFieldUpdateOperationsInput | number
     observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratado?: BoolFieldUpdateOperationsInput | boolean
+    tratatoAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
